@@ -9,16 +9,21 @@ export default async function VendedorDashboard() {
   const { profile } = await requireRole("vendedor");
   const supabase = createClient();
 
-  const { data: solicitudes } = await supabase
+  let query = supabase
     .from("solicitudes")
     .select("id, folio, cliente_nombre, created_at, solicitud_servicios(id, tipo_servicio, status)")
-    .eq("vendedor_id", profile.id)
     .order("created_at", { ascending: false });
 
+  if (profile.role !== "admin") {
+    query = query.eq("vendedor_id", profile.id);
+  }
+
+  const { data: solicitudes } = await query;
+
   return (
-    <AppShell role="vendedor" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-navy">Mis solicitudes</h1>
+        <h1 className="text-2xl font-bold text-navy">{profile.role === "admin" ? "Todas las solicitudes" : "Mis solicitudes"}</h1>
         <Link href="/vendedor/nueva-solicitud" className="btn-gold">
           + Nueva solicitud
         </Link>

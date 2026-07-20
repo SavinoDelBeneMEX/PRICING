@@ -24,7 +24,7 @@ export default async function PricingServicioPage({ params }: { params: { servic
   if (!servicio) notFound();
 
   return (
-    <AppShell role="pricing" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-navy">
           {(servicio as any).solicitudes?.folio} · {TIPO_SERVICIO_LABELS[servicio.tipo_servicio as keyof typeof TIPO_SERVICIO_LABELS]}

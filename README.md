@@ -31,7 +31,7 @@ cp .env.example .env.local   # completar con las credenciales de tu proyecto Sup
 ```
 
 1. Crea un proyecto en Supabase y ejecuta `supabase/migrations/0001_init.sql` (SQL editor o `supabase db push`).
-2. Crea manualmente en Supabase Auth los primeros usuarios internos (uno por rol) y, para cada uno, una fila en `profiles` con su `role` (`vendedor`, `pricing`, `legal`, `finanzas`).
+2. Crea manualmente en Supabase Auth los primeros usuarios internos (uno por rol) y, para cada uno, una fila en `profiles` con su `role` (`vendedor`, `pricing`, `legal`, `finanzas`). Existe también el rol `admin`, que puede navegar los 4 paneles (`/vendedor`, `/pricing`, `/legal`, `/finanzas`) y `/auditoria` sin restricción — útil para soporte/QA. El admin puede ver todo, pero las acciones exclusivas de vendedor (crear solicitud, cotizar, confirmar) siguen requiriendo el rol `vendedor`.
 3. Los proveedores no se crean manualmente: se registran ellos mismos desde el link de invitación que envía Pricing.
 4. `npm run dev` y entra por `/login` (interno) o `/proveedor/login` (proveedores).
 

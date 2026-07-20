@@ -1,4 +1,4 @@
-export type Role = "vendedor" | "pricing" | "legal" | "finanzas";
+export type Role = "vendedor" | "pricing" | "legal" | "finanzas" | "admin";
 
 export type TipoServicio = "maritimo" | "aereo" | "terrestre" | "aduanal" | "seguros";
 

@@ -18,7 +18,7 @@ export async function requireRole(role: Role) {
     .eq("id", user!.id)
     .single();
 
-  if (!profile || !profile.active || profile.role !== role) {
+  if (!profile || !profile.active || (profile.role !== role && profile.role !== "admin")) {
     redirect("/login");
   }
 

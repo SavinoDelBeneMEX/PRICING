@@ -18,7 +18,7 @@ export default async function LegalDashboard() {
     .order("invited_at", { ascending: true });
 
   return (
-    <AppShell role="legal" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <h1 className="text-2xl font-bold text-navy mb-6">Expedientes pendientes de revisión</h1>
 
       {(!proveedores || proveedores.length === 0) && <div className="card text-center text-muted">No hay expedientes pendientes.</div>}

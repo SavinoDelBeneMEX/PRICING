@@ -14,7 +14,7 @@ export default async function SolicitudDetallePage({ params }: { params: { id: s
     .eq("id", params.id)
     .single();
 
-  if (!solicitud || solicitud.vendedor_id !== profile.id) notFound();
+  if (!solicitud || (solicitud.vendedor_id !== profile.id && profile.role !== "admin")) notFound();
 
   const { data: servicios } = await supabase
     .from("solicitud_servicios")
@@ -28,7 +28,7 @@ export default async function SolicitudDetallePage({ params }: { params: { id: s
     .order("created_at", { ascending: true });
 
   return (
-    <AppShell role="vendedor" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-navy">{solicitud.folio}</h1>
         <p className="text-muted">

@@ -20,6 +20,13 @@ const NAV_BY_ROLE: Record<Role, { href: string; label: string }[]> = {
     { href: "/finanzas", label: "Altas pendientes" },
     { href: "/auditoria", label: "Auditoría" },
   ],
+  admin: [
+    { href: "/vendedor", label: "Vendedor" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/legal", label: "Legal" },
+    { href: "/finanzas", label: "Finanzas" },
+    { href: "/auditoria", label: "Auditoría" },
+  ],
 };
 
 const ROLE_LABELS: Record<Role, string> = {
@@ -27,6 +34,7 @@ const ROLE_LABELS: Record<Role, string> = {
   pricing: "Pricing",
   legal: "Legal",
   finanzas: "Finanzas",
+  admin: "Admin",
 };
 
 export default function AppShell({

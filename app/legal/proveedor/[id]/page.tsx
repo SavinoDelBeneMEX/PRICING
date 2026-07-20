@@ -32,7 +32,7 @@ export default async function LegalProveedorPage({ params }: { params: { id: str
     .eq("proveedor_id", proveedor.id);
 
   return (
-    <AppShell role="legal" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-navy">{proveedor.razon_social || proveedor.email_invitacion}</h1>
         <p className="text-muted">

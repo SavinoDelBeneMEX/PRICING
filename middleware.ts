@@ -7,13 +7,17 @@ const ROLE_HOME: Record<Role, string> = {
   pricing: "/pricing",
   legal: "/legal",
   finanzas: "/finanzas",
+  admin: "/pricing",
 };
+
+const ALL_ROLE_PREFIXES = ["/vendedor", "/pricing", "/legal", "/finanzas"];
 
 const PUBLIC_PATHS = ["/login", "/proveedor/login", "/proveedor/registro", "/api"];
 
 function isRoleAllowed(pathname: string, role: Role) {
   const prefix = "/" + pathname.split("/")[1];
   if (prefix === "/auditoria") return true;
+  if (role === "admin") return ALL_ROLE_PREFIXES.includes(prefix);
   return prefix === ROLE_HOME[role];
 }
 

@@ -18,7 +18,7 @@ export default async function FinanzasDashboard() {
     .order("invited_at", { ascending: true });
 
   return (
-    <AppShell role="finanzas" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <h1 className="text-2xl font-bold text-navy mb-6">Altas pendientes</h1>
 
       {(!proveedores || proveedores.length === 0) && <div className="card text-center text-muted">No hay altas pendientes.</div>}

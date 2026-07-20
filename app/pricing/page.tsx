@@ -16,7 +16,7 @@ export default async function PricingDashboard() {
     .order("created_at", { ascending: true });
 
   return (
-    <AppShell role="pricing" userName={profile.full_name}>
+    <AppShell role={profile.role} userName={profile.full_name}>
       <h1 className="text-2xl font-bold text-navy mb-6">Cola de cotización</h1>
 
       {(!servicios || servicios.length === 0) && <div className="card text-center text-muted">No hay solicitudes pendientes.</div>}
